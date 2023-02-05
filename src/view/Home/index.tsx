@@ -8,12 +8,27 @@ export default function Home() {
 
   return (
     <div className={styles._} style={{ backgroundColor: theme }}>
-      <Calendar
-        onChange={() => {
-          console.log("点击了");
-        }}
-        value={new Date()}
-      />
+      <div className={styles.date_box}>
+        <div className={styles.date}>
+          <Calendar
+            className={styles.calendar}
+            onChange={() => {
+              console.log("点击了");
+            }}
+            // value={new Date()}
+            locale={"en"}
+            tileContent={({ activeStartDate, date, view }) => {
+              console.log(activeStartDate, date, view);
+              return (
+                <div className={styles.tile_context}>
+                  记录模块记录模块记录模块记录模块记录模块记录模块记录模块记录模块
+                </div>
+              );
+            }}
+          />
+        </div>
+        <div className={styles.record}>记录模块</div>
+      </div>
     </div>
   );
 }
