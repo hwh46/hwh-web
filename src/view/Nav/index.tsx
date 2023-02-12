@@ -27,13 +27,20 @@ export default function Nav() {
 
   return (
     <div className={styles.nav} style={{ backgroundColor: navColor[theme as Color] }}>
-      <Logo style={{ height: "100%", marginLeft: 15 }} />
-      <div className={styles.control}>
-        <Popover content={popoverContent} title="主题颜色" trigger="click">
-          <SkinOutlined style={{ fontSize: 30, lineHeight: 1.6 }} />
-        </Popover>
+      <div style={{ maxWidth: "1800px", margin: "0 auto", position: "relative" }}>
+        <Logo style={{ height: "100%", marginTop: 10 }} />
+        <div className={styles.control}>
+          <Popover content={popoverContent} title="主题颜色" trigger="click">
+            <SkinOutlined style={{ fontSize: 30, lineHeight: 1.6 }} />
+          </Popover>
 
-        <Avatar className={styles.avatar} src={avatarImg} size={"large"} icon={<UserOutlined />} />
+          <Avatar
+            className={styles.avatar}
+            src={avatarImg}
+            size={"large"}
+            icon={<UserOutlined />}
+          />
+        </div>
       </div>
     </div>
   );

@@ -13,6 +13,10 @@ const route = [
     path: "*",
     element: lazy(() => import("./compoents/404")),
   },
+  {
+    path: "/login",
+    element: lazy(() => import("./compoents/Login")),
+  },
 ];
 
 export default route;
