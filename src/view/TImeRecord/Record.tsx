@@ -2,25 +2,28 @@ import styles from "./home.module.less";
 import { Input, message } from "antd";
 import { ChangeEvent, useEffect, useState } from "react";
 import { RecordAll, updateRecord } from "@/api/record";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/store";
+import { getListAll, updateAsync } from "@/store/reducers/Record";
 
 interface ViewProps {
   time: string;
   lists: RecordAll[];
-  RecordAll: () => void;
 }
 
-export default function RecordView({ time, lists, RecordAll }: ViewProps) {
+export default function RecordView({ time, lists }: ViewProps) {
   const { TextArea } = Input;
   const [textValue, setTextValue] = useState<string>("");
   const [flag, setFlag] = useState<boolean>(false);
+  const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     let timer: number;
     try {
       if (flag) {
         timer = setTimeout(async () => {
-          const res = await updateRecord({ recordTime: time, description: textValue });
-          message.success(res);
-          RecordAll();
+          const res = dispatch(updateAsync({ recordTime: time, description: textValue }));
+          // message.success(res);
+          // dispatch(getListAll());
           setFlag(false);
         }, 2000);
       }

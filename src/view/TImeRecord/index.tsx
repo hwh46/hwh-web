@@ -2,22 +2,20 @@ import { useContext, useEffect, useState } from "react";
 import { Thecontext } from "@/ThemeContext";
 import styles from "./home.module.less";
 import Calendar from "./Calendar";
-import { getRecordAll, RecordAll } from "@/api/record";
 import { getStrTime } from "@/utils/getStrTime";
-import RecordView from "@/view/Home/Record";
+import RecordView from "@/view/TImeRecord/Record";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/store";
+import { getListAll } from "@/store/reducers/Record";
 
-export default function Home() {
+export default function TImeRecord() {
   const { theme } = useContext(Thecontext);
-  const [lists, setList] = useState<RecordAll[]>();
   const [time, setTime] = useState<string>(getStrTime(new Date()));
-
-  const RecordAll = async () => {
-    const res = await getRecordAll();
-    setList(res);
-  };
+  const { lists } = useSelector((state: RootState) => state.recordList);
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    RecordAll();
+    dispatch(getListAll());
   }, []);
 
   return (
@@ -25,7 +23,7 @@ export default function Home() {
       <div className={styles.date_box}>
         <Calendar setTime={setTime} lists={lists!} />
         <div className={styles.record}>
-          <RecordView time={time} lists={lists!} RecordAll={RecordAll} />
+          <RecordView time={time} lists={lists!} />
         </div>
       </div>
     </div>
