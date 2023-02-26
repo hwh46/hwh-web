@@ -1,0 +1,61 @@
+._ {
+  padding: 20px 20px 0 20px;
+  height: 100%;
+
+
+  .date_box {
+    padding-top: 80px;
+    display: flex;
+    justify-content: space-around;
+  }
+  @font-face {
+    font-family: "myFont";
+    font-weight: 400;
+    src: url("//at.alicdn.com/wf/webfont/HC9lNi9QfitI/Cz0o8urtrLfLL_38SfbCK.woff2") format("woff2"),
+      url("//at.alicdn.com/wf/webfont/HC9lNi9QfitI/ftkFxbADYR8c-Ul9ovLat.woff") format("woff");
+    font-display: swap;
+  }
+  .record,
+  .date {
+    font-family: "myFont";
+
+    .tile_context {
+      width: 100%;
+      font-size: 20px;
+      color: #49c3849e;
+      font-family: "myFont";
+      white-space: nowrap; //禁止换行
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .record {
+    width: 30%;
+    height: 30vh;
+
+    .header {
+      height: 60px;
+      font-size: 25px;
+      font-weight: 400;
+      background-color: #80808042;
+      border-radius: 5px;
+      text-align: center;
+      line-height: 60px;
+      box-shadow: 0 0 13px 8px #77777757;
+    }
+
+    .content {
+      font-size: 20px;
+      font-family: "myFont";
+      background-color: rgba(155, 149, 149, 0.26);
+      height: 100%;
+      box-shadow: 0 0 13px 8px #77777757;
+    }
+    .text {
+      color: rgb(2, 44, 40);
+      font-size: 30px !important;
+      font-family: "myFont" !important;
+    }
+  }
+}

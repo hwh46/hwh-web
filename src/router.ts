@@ -3,7 +3,7 @@ import { lazy } from "react";
 const route = [
   {
     path: "/",
-    element: lazy(() => import("./view/Home")),
+    element: lazy(() => import("./view/TImeRecord")),
   },
   {
     path: "/about",
@@ -11,11 +11,11 @@ const route = [
   },
   {
     path: "*",
-    element: lazy(() => import("./compoents/404")),
+    element: lazy(() => import("./components/404")),
   },
   {
     path: "/login",
-    element: lazy(() => import("./compoents/Login")),
+    element: lazy(() => import("./components/Login")),
   },
 ];
 

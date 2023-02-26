@@ -1,4 +1,4 @@
-import styles from "./home.module.less";
+import styles from "./record.module.less";
 import { getStrTime } from "@/utils/getStrTime";
 import CalendarCom from "react-calendar";
 

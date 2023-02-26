@@ -1,19 +1,22 @@
 import styles from "@/app.module.less";
 import Nav from "./view/Nav";
 import Provider from "./Provider";
-import { ThemeContext } from "@/ThemeContext";
+import { Thecontext } from "@/ThemeContext";
 import { useLocation } from "react-router-dom";
+import { useContext } from "react";
+import bb from "./assets/bb.jpg";
 
 function App() {
   const { pathname } = useLocation();
-
+  const { theme } = useContext(Thecontext);
+  console.log(theme);
   return (
-    <ThemeContext>
-      <div className={styles._}>
-        {pathname !== "/login" && <Nav />}
+    <div className={styles._}>
+      {pathname !== "/login" && <Nav />}
+      <div className={styles.bgc} style={{ backgroundImage: `url(${bb})` }}>
         <Provider />
       </div>
-    </ThemeContext>
+    </div>
   );
 }
 

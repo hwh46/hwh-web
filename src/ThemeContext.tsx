@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode, useState } from "react";
-import { ErrorBoundary } from "@/compoents/ErrorBoundary";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { ThemeParam } from "./module/main";
 import { Color } from "./module/themeColor";
 
