@@ -1,10 +1,10 @@
-import styles from "./home.module.less";
+import styles from "./record.module.less";
 import { Input, message } from "antd";
 import { ChangeEvent, useEffect, useState } from "react";
-import { RecordAll, updateRecord } from "@/api/record";
+import { RecordAll } from "@/api/record";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store";
-import { getListAll, updateAsync } from "@/store/reducers/Record";
+import { updateAsync } from "@/store/reducers/Record";
 
 interface ViewProps {
   time: string;
@@ -20,10 +20,8 @@ export default function RecordView({ time, lists }: ViewProps) {
     let timer: number;
     try {
       if (flag) {
-        timer = setTimeout(async () => {
-          const res = dispatch(updateAsync({ recordTime: time, description: textValue }));
-          // message.success(res);
-          // dispatch(getListAll());
+        timer = setTimeout(() => {
+          dispatch(updateAsync({ recordTime: time, description: textValue }));
           setFlag(false);
         }, 2000);
       }

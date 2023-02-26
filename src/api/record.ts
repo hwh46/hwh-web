@@ -18,7 +18,7 @@ export interface UpdateRecordProps {
   recordTime: string;
 }
 
-const UPDATE_RECORD = "/updateRecord";
+const UPDATE_RECORD = "/addRecord";
 export async function updateRecord(data: UpdateRecordProps) {
   const result = await request.post(UPDATE_RECORD, data);
   return result.data;

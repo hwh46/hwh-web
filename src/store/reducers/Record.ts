@@ -14,7 +14,7 @@ export const getListAll = createAsyncThunk<RecordAll[]>("records/all", async (_,
   return res;
 });
 
-export const updateAsync = createAsyncThunk<string, UpdateRecordProps>(
+export const updateAsync = createAsyncThunk<RecordAll, UpdateRecordProps>(
   "records/update",
   async (data, store) => {
     const res = await updateRecord(data);
@@ -33,14 +33,7 @@ const RecordReducers = createSlice({
   // 异步的thunk
   extraReducers: (builder) => {
     builder.addCase(getListAll.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.lists = action.payload;
-    });
-    builder.addCase(getListAll.pending, (state, action) => {
-      // console.log("请求中", action);
-    });
-    builder.addCase(getListAll.rejected, (state, action) => {
-      // console.log("请求出错", action);
     });
     builder.addCase(updateAsync.fulfilled, (state, action) => {
       const { payload } = action;
@@ -50,7 +43,6 @@ const RecordReducers = createSlice({
         }
         return list;
       });
-      console.log(res);
       state.lists = res;
     });
   },
