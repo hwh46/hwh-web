@@ -9,7 +9,7 @@ import bb from "./assets/bb.jpg";
 function App() {
   const { pathname } = useLocation();
   const { theme } = useContext(Thecontext);
-  console.log(theme);
+
   return (
     <div className={styles._}>
       {pathname !== "/login" && <Nav />}
