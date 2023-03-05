@@ -2,8 +2,8 @@ import styles from "./record.module.less";
 import { Input, message } from "antd";
 import { ChangeEvent, useEffect, useState } from "react";
 import { RecordAll } from "@/api/record";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/store";
 import { updateAsync } from "@/store/reducers/Record";
 
 interface ViewProps {
@@ -11,7 +11,8 @@ interface ViewProps {
   lists: RecordAll[];
 }
 
-export default function RecordView({ time, lists }: ViewProps) {
+export default function RecordView({ time }: ViewProps) {
+  const { lists } = useSelector((state: RootState) => state.recordList);
   const { TextArea } = Input;
   const [textValue, setTextValue] = useState<string>("");
   const [flag, setFlag] = useState<boolean>(false);
