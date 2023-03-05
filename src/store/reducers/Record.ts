@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import { getRecordAll, RecordAll, updateRecord, UpdateRecordProps } from "@/api/record";
 
 interface StateProp {
@@ -37,13 +37,13 @@ const RecordReducers = createSlice({
     });
     builder.addCase(updateAsync.fulfilled, (state, action) => {
       const { payload } = action;
-      const res = state.lists.map((list) => {
-        if (list.id === payload.id) {
-          return payload;
-        }
-        return list;
-      });
-      state.lists = res;
+      const index = state.lists.findIndex((item) => item.recordTime === payload.recordTime);
+      if (index === -1) {
+        const res = [...state.lists, payload];
+        state.lists = res;
+      } else {
+        state.lists[index] = payload;
+      }
     });
   },
 });

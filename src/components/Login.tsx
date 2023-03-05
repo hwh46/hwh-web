@@ -3,6 +3,7 @@ import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import styles from "./login.module.less";
 import { useState } from "react";
 import { loginUser, registerUser } from "@/api/Login";
+import { useNavigate } from "react-router";
 
 interface formValue {
   name: string;
@@ -11,6 +12,7 @@ interface formValue {
 }
 
 export default function Login() {
+  const navigate = useNavigate();
   const [cut, setCut] = useState<boolean>(false);
   const onFinish = async (values: formValue) => {
     const { name, password } = values;
@@ -19,7 +21,12 @@ export default function Login() {
       message.success(res);
     } else {
       const res = await loginUser({ name, password });
+      if (res.token) {
+        localStorage.setItem("token", res.token);
+      }
       res && message.success("登录成功");
+      const path = localStorage.getItem("redirectPathname");
+      path && navigate(path);
     }
   };
 
