@@ -16,13 +16,14 @@ export default function TImeRecord() {
   useEffect(() => {
     dispatch(getListAll());
   }, []);
-
+  console.log('测试reset');
+  
   return (
     <div className={styles._}>
       <div className={styles.date_box}>
-        <Calendar setTime={setTime} lists={lists!} />
+        <Calendar setTime={setTime} lists={lists} />
         <div className={styles.record}>
-          <RecordView time={time} lists={lists!} />
+          <RecordView time={time} lists={lists} />
         </div>
       </div>
     </div>

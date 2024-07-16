@@ -5,6 +5,7 @@ import { RecordAll } from "@/api/record";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store";
 import { updateAsync } from "@/store/reducers/Record";
+import { getStrTime } from "@/utils/getStrTime";
 
 interface ViewProps {
   time: string;
@@ -37,7 +38,7 @@ export default function RecordView({ time }: ViewProps) {
 
   useEffect(() => {
     if (lists) {
-      const current = lists.find((item) => item.recordTime === time);
+      const current = lists.find((item) => getStrTime(new Date(item.recordTime)) === time);
       if (current) {
         setTextValue(current.description);
       } else {

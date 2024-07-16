@@ -20,7 +20,8 @@ export default function Calendar({ setTime, lists }: CalendarProps) {
         locale={"en"}
         tileContent={({ date }) => {
           const strTime = getStrTime(date);
-          const content = lists && lists.find((c) => c.recordTime === strTime);
+          const content =
+            lists && lists.find((c) => getStrTime(new Date(c.recordTime)) === strTime);
           return <div className={styles.tile_context}>{content && content.description}</div>;
         }}
       />
